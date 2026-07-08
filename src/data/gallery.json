@@ -1,0 +1,51 @@
+[
+    {
+        "image": "src/images/gallery/gallery1.png",
+        "title": "Mariage"
+    },
+    {
+        "image": "src/images/gallery/gallery2.png",
+        "title": "Concert"
+    },
+    {
+        "image": "src/images/gallery/gallery3.png",
+        "title": "Éclairage"
+    },
+    {
+        "image": "src/images/gallery/gallery4.png",
+        "title": "DJ"
+    },
+    {
+        "image": "src/images/gallery/gallery5.png",
+        "title": "Festival"
+    },
+    {
+        "image": "src/images/gallery/gallery6.png",
+        "title": "Conférence"
+    },
+    {
+        "image": "src/images/gallery/gallery7.png",
+        "title": "Soirée"
+    },
+    {
+        "image": "src/images/gallery/gallery78.png",
+        "title": "Écran LED"
+    },
+    {
+        "image": "src/images/gallery/gallery9.png",
+        "title": "Écran LED"
+    },
+    {
+        "image": "src/images/gallery/gallery8.png",
+        "title": "Écran LED"
+    },
+    {
+        "image": "src/images/gallery/gallery10.png",
+        "title": "Écran LED"
+    },
+    {
+        "image": "src/images/gallery/gallery11.png",
+        "title": "Écran LED"
+    }
+    
+]

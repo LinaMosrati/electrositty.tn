@@ -1,0 +1,36 @@
+[
+    {
+        "name": "Pack <br> Basic",
+        "price": "260 DT",
+        "image": "src/images/packs/basic.jpg",
+        "description": "2 Satellites + 1 Caisson • 1 Micro filaire",
+        "color": "yellow",
+        "idealFor": "Petites soirées, anniversaires <br> et réunions <br> familiales"
+    },
+    {
+        "name": "Pack Ambiance",
+        "price": "400 DT",
+        "image": "src/images/packs/ambiance.jpg",
+        "description": "4 PAR LED • Machine à fumée",
+        "color": "orange",
+         "idealFor": "Fiançailles,<br> événements <br> familiaux  et fêtes privées "
+    },
+    {
+        "name": "Pack Premium",
+        "price": "650 DT",
+        "image": "src/images/packs/premium.jpg",
+        "description": "Sonorisation complète • Beam • PAR LED",
+        "color": "cyan",
+         "idealFor": "Mariages, séminaires, grands shows et événements professionnels"
+    },
+    
+    {
+        "name": "Pack <br> Prestige",
+        "price": "Sur devis",
+        "image": "src/images/packs/prestige.jpg",
+        "description": "Écran LED • Structure aluminium",
+        "color": "teal",
+         "idealFor": "Concerts, festivals, productions audiovisuelles et grands événements"
+    }
+    
+]

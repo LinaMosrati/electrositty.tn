@@ -1,0 +1,86 @@
+[
+    {
+        "name": "Satellite 15\" avec trépied",
+        "category": "Son",
+        "price": "80 DT / jour",
+        "image": "src/images/materiels/speaker.jpg",
+        "available": true
+    },
+    {
+        "name": "Caisson de basse",
+        "category": "Son",
+        "price": "100 DT / jour",
+        "image": "src/images/materiels/subwoofer.jpg",
+        "available": true
+    },
+    {
+        "name": "Micro avec câble",
+        "category": "Son",
+        "price": "25 DT / jour",
+        "image": "src/images/materiels/micro-cable.jpg",
+        "available": true
+    },
+    {
+        "name": "Micro sans fil",
+        "category": "Son",
+        "price": "60 DT / jour",
+        "image": "src/images/materiels/micro-hf.jpg",
+        "available": true
+    },
+    {
+        "name": "PAR LED",
+        "category": "Lumière",
+        "price": "30 DT / pièce / jour",
+        "image": "src/images/materiels/parled.jpg",
+        "available": true
+    },
+    {
+        "name": "Beam / Moving Head",
+        "category": "Lumière",
+        "price": "90 DT / pièce / jour",
+        "image": "src/images/materiels/beam.jpg",
+        "available": true
+    },
+    {
+        "name": "Projecteur Découpe",
+        "category": "Lumière",
+        "price": "80 DT / jour",
+        "image": "src/images/materiels/decoupe.jpg",
+        "available": true
+    },
+    {
+        "name": "Machine à fumée",
+        "category": "Lumière",
+        "price": "50 DT / jour",
+        "image": "src/images/materiels/fumee.jpg",
+        "available": true
+    },
+    {
+        "name": "Écran LED NT V2 Indoor",
+        "category": "LED",
+        "price": "120 DT / m² / jour",
+        "image": "src/images/materiels/led-indoor.jpg",
+        "available": true
+    },
+    {
+        "name": "Écran LED NT V2 Outdoor",
+        "category": "LED",
+        "price": "150 DT / m² / jour",
+        "image": "src/images/materiels/led-outdoor.jpg",
+        "available": true
+    },
+    {
+        "name": "Régie Pioneer 2000 + NXS2",
+        "category": "DJ",
+        "price": "290 DT / jour",
+        "image": "src/images/materiels/nxs2.jpg",
+        "available": true
+    },
+    {
+        "name": "Régie Pioneer 2000 + Xone 92",
+        "category": "DJ",
+        "price": "290 DT / jour",
+        "image": "src/images/materiels/xone92.jpg",
+        "available": true
+    }
+]
