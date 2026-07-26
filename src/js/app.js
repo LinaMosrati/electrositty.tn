@@ -10,15 +10,16 @@ async function loadComponent(id, path) {
 
 async function init() {
 
-    await loadComponent("navbar", "src/components/Navbar.html");
-    await loadComponent("hero", "src/components/Hero.html");
-    await loadComponent("services", "src/components/Services.html");
-    await loadComponent("about", "src/components/About.html");
-    await loadComponent("packs", "src/components/Packs.html");
-    await loadComponent("materiels", "src/components/Materiels.html");
-    await loadComponent("process", "src/components/Process.html");
-    await loadComponent("whychooseus", "src/components/WhyChooseUs.html");
-
+  await Promise.all([
+    loadComponent("navbar", "src/components/Navbar.html"),
+    loadComponent("hero", "src/components/Hero.html"),
+    loadComponent("services", "src/components/Services.html"),
+    loadComponent("about", "src/components/About.html"),
+    loadComponent("packs", "src/components/Packs.html"),
+    loadComponent("materiels", "src/components/Materiels.html"),
+    loadComponent("process", "src/components/Process.html"),
+    loadComponent("whychooseus", "src/components/WhyChooseUs.html"),
+]);
   
 
     // Navbar
