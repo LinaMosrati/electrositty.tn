@@ -1,86 +1,110 @@
 [
-    {
-        "name": "Satellite 15\" avec trépied",
-        "category": "Son",
-        "price": "80 DT / jour",
-        "image": "src/images/materiels/speaker.jpg",
-        "available": true
-    },
-    {
-        "name": "Caisson de basse",
-        "category": "Son",
-        "price": "100 DT / jour",
-        "image": "src/images/materiels/subwoofer.jpg",
-        "available": true
-    },
-    {
-        "name": "Micro avec câble",
-        "category": "Son",
-        "price": "25 DT / jour",
-        "image": "src/images/materiels/micro-cable.jpg",
-        "available": true
-    },
-    {
-        "name": "Micro sans fil",
-        "category": "Son",
-        "price": "60 DT / jour",
-        "image": "src/images/materiels/micro-hf.jpg",
-        "available": true
-    },
-    {
-        "name": "PAR LED",
-        "category": "Lumière",
-        "price": "30 DT / pièce / jour",
-        "image": "src/images/materiels/parled.jpg",
-        "available": true
-    },
-    {
-        "name": "Beam / Moving Head",
-        "category": "Lumière",
-        "price": "90 DT / pièce / jour",
-        "image": "src/images/materiels/beam.jpg",
-        "available": true
-    },
-    {
-        "name": "Projecteur Découpe",
-        "category": "Lumière",
-        "price": "80 DT / jour",
-        "image": "src/images/materiels/decoupe.jpg",
-        "available": true
-    },
-    {
-        "name": "Machine à fumée",
-        "category": "Lumière",
-        "price": "50 DT / jour",
-        "image": "src/images/materiels/fumee.jpg",
-        "available": true
-    },
-    {
-        "name": "Écran LED NT V2 Indoor",
-        "category": "LED",
-        "price": "120 DT / m² / jour",
-        "image": "src/images/materiels/led-indoor.jpg",
-        "available": true
-    },
-    {
-        "name": "Écran LED NT V2 Outdoor",
-        "category": "LED",
-        "price": "150 DT / m² / jour",
-        "image": "src/images/materiels/led-outdoor.jpg",
-        "available": true
-    },
-    {
-        "name": "Régie Pioneer 2000 + NXS2",
-        "category": "DJ",
-        "price": "290 DT / jour",
-        "image": "src/images/materiels/nxs2.jpg",
-        "available": true
-    },
-    {
-        "name": "Régie Pioneer 2000 + Xone 92",
-        "category": "DJ",
-        "price": "290 DT / jour",
-        "image": "src/images/materiels/xone92.jpg",
-        "available": true
-    }
+  {
+    "name": "Satellite 15\" avec trépied",
+    "category": "Son",
+    "description": "Enceinte professionnelle idéale pour les mariages, conférences et soirées.",
+    "price": "80 DT / jour",
+    "badge": "Le plus demandé",
+    "image": "src/images/materiels/speaker.jpg",
+    "available": true
+  },
+  {
+    "name": "Caisson de basse",
+    "category": "Son",
+    "description": "Renforce les basses pour une sonorisation puissante et immersive.",
+    "price": "100 DT / jour",
+    "badge": "Professionnel",
+    "image": "src/images/materiels/subwoofer.jpg",
+    "available": true
+  },
+  {
+    "name": "Micro avec câble",
+    "category": "Son",
+    "description": "Microphone filaire adapté aux discours, conférences et animations.",
+    "price": "25 DT / jour",
+    "badge": "Économique",
+    "image": "src/images/materiels/micro-cable.jpg",
+    "available": true
+  },
+  {
+    "name": "Micro sans fil",
+    "category": "Son",
+    "description": "Micro HF offrant une grande liberté de mouvement sur scène.",
+    "price": "60 DT / jour",
+    "badge": "Le plus demandé",
+    "image": "src/images/materiels/micro-hf.jpg",
+    "available": true
+  },
+  {
+    "name": "PAR LED",
+    "category": "Lumière",
+    "description": "Projecteur LED parfait pour créer des ambiances lumineuses colorées.",
+    "price": "30 DT / pièce / jour",
+    "badge": "Populaire",
+    "image": "src/images/materiels/parled.jpg",
+    "available": true
+  },
+  {
+    "name": "Beam / Moving Head",
+    "category": "Lumière",
+    "description": "Projecteur motorisé pour spectacles, concerts et événements premium.",
+    "price": "90 DT / pièce / jour",
+    "badge": "Professionnel",
+    "image": "src/images/materiels/beam.jpg",
+    "available": true
+  },
+  {
+    "name": "Projecteur Découpe",
+    "category": "Lumière",
+    "description": "Éclairage précis pour mettre en valeur une scène ou un intervenant.",
+    "price": "80 DT / jour",
+    "badge": "Scène",
+    "image": "src/images/materiels/decoupe.jpg",
+    "available": true
+  },
+  {
+    "name": "Machine à fumée",
+    "category": "Lumière",
+    "description": "Crée un effet de fumée pour sublimer les jeux de lumière.",
+    "price": "50 DT / jour",
+    "badge": "Effets spéciaux",
+    "image": "src/images/materiels/fumee.jpg",
+    "available": true
+  },
+  {
+    "name": "Écran LED NT V2 Indoor",
+    "category": "LED",
+    "description": "Écran LED haute définition pour les événements en intérieur.",
+    "price": "120 DT / m² / jour",
+    "badge": "HD",
+    "image": "src/images/materiels/led-indoor.jpg",
+    "available": true
+  },
+  {
+    "name": "Écran LED NT V2 Outdoor",
+    "category": "LED",
+    "description": "Écran LED résistant aux conditions extérieures pour les grands événements.",
+    "price": "150 DT / m² / jour",
+    "badge": "Outdoor",
+    "image": "src/images/materiels/led-outdoor.jpg",
+    "available": true
+  },
+  {
+    "name": "Régie Pioneer 2000 + NXS2",
+    "category": "DJ",
+    "description": "Console DJ professionnelle utilisée dans les clubs et festivals.",
+    "price": "290 DT / jour",
+    "badge": "Premium",
+    "image": "src/images/materiels/nxs2.jpg",
+    "available": true
+  },
+  {
+    "name": "Régie Pioneer 2000 + Xone 92",
+    "category": "DJ",
+    "description": "Configuration DJ haut de gamme offrant un mixage précis et performant.",
+    "price": "290 DT / jour",
+    "badge": "Premium",
+    "image": "src/images/materiels/xone92.jpg",
+    "available": true
+  }
 ]

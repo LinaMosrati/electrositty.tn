@@ -1,86 +1,330 @@
+// ===============================
+// CONFIGURATION
+// ===============================
+
+const EVENTS = [
+    {
+        name: "Tous",
+        icon: "✨",
+        description: "Découvrez tous nos packs."
+    },
+    {
+        name: "Anniversaire",
+        icon: "🎂",
+        description: "Des solutions idéales pour vos anniversaires."
+    },
+    {
+        name: "Mariage",
+        icon: "💍",
+        description: "Une ambiance exceptionnelle pour votre mariage."
+    },
+    {
+        name: "Conférence",
+        icon: "🏢",
+        description: "Du matériel professionnel pour vos conférences."
+    },
+    {
+        name: "Concert",
+        icon: "🎤",
+        description: "Des équipements puissants pour vos concerts."
+    },
+    {
+        name: "Soirée privée",
+        icon: "🎉",
+        description: "Créez une soirée inoubliable."
+    },
+    {
+        name: "Remise de diplôme",
+        icon: "🎓",
+        description: "Une sonorisation parfaite pour votre cérémonie."
+    }
+];
+
+let allPacks = [];
+
+// ===============================
+// CHARGEMENT
+// ===============================
+
 async function loadPacks() {
 
-    const response = await fetch("src/data/packs.json");
+    try {
 
-    const packs = await response.json();
+        const response = await fetch("./src/data/packs.json");
 
-    const container = document.getElementById("packs-container");
+        allPacks = await response.json();
 
-    container.innerHTML = "";
+        createSidebar();
 
-    packs.forEach(pack => {
+        filterPacks("Tous");
 
-        container.innerHTML += `
+    } catch (error) {
 
-        <div
-            class="group overflow-hidden rounded-3xl bg-zinc-900 border border-zinc-800 transition duration-500 hover:-translate-y-3 hover:border-teal-500 hover:shadow-2xl hover:shadow-teal-500/20">
+        console.error(error);
 
-            <div class="overflow-hidden">
+    }
 
-                <img
-                    src="${pack.image}"
-                    alt="${pack.name}"
-                    class="h-72 w-full object-cover transition duration-700 group-hover:scale-110">
+}
 
-            </div>
+// ===============================
+// SIDEBAR
+// ===============================
 
-            <div class="p-8">
+function createSidebar() {
 
-                <h3 class="text-3xl font-bold">
+    const sidebar = document.getElementById("event-sidebar");
 
-                    ${pack.name}
+    sidebar.innerHTML = "";
 
-                </h3>
+    EVENTS.forEach((event, index) => {
 
-                <p class="mt-4 text-zinc-400">
+        sidebar.innerHTML += `
 
-                    ${pack.description}
+<button
+class="event-btn w-full rounded-2xl border border-zinc-800 bg-zinc-900 px-5 py-4 text-left text-white
+flex items-center justify-between
+${index === 0 ? "active-event" : ""}"
 
-                </p>
+data-event="${event.name}">
 
-                <h4 class="mt-6 text-4xl font-black text-teal-400">
+<div class="flex items-center gap-3">
 
-                    ${pack.price}
+<span class="text-2xl">
 
-                </h4>
+${event.icon}
 
-                <!-- Idéal pour -->
+</span>
 
-                <div class="mt-8 rounded-2xl border border-teal-500/20 bg-teal-500/10 p-4">
+<span class="font-semibold">
 
-                    <p class="text-sm font-semibold uppercase tracking-wider text-teal-400">
+${event.name}
 
-                        <i class="fa-solid fa-star mr-2"></i>
+</span>
 
-                        Idéal pour
+</div>
 
-                    </p>
+<i class="fa-solid fa-chevron-right text-sm opacity-50"></i>
 
-                    <p class="mt-2 text-white">
+</button>
 
-                        ${pack.idealFor}
+`;
 
-                    </p>
+    });
 
-                </div>
+    document.querySelectorAll(".event-btn").forEach(button => {
 
-                <a
-                    href="https://wa.me/21653308760"
-                    target="_blank"
-                    class="mt-8 inline-flex rounded-full bg-teal-500 px-6 py-3 font-semibold text-black transition hover:bg-teal-400">
+        button.addEventListener("click", () => {
 
-                    Réserver
+            document
+                .querySelectorAll(".event-btn")
+                .forEach(btn => btn.classList.remove("active-event"));
 
-                </a>
+            button.classList.add("active-event");
 
-            </div>
+            filterPacks(button.dataset.event);
 
-        </div>
-
-        `;
+        });
 
     });
 
 }
 
+// ===============================
+// FILTRE
+// ===============================
+
+function filterPacks(eventName) {
+
+    const title = document.getElementById("selected-event-title");
+
+    const description = document.getElementById("selected-event-description");
+
+    const event = EVENTS.find(e => e.name === eventName);
+
+    title.innerHTML =
+        event.icon + " " + event.name;
+
+    description.innerHTML =
+        event.description;
+
+    let filtered = [];
+
+    if (eventName === "Tous") {
+
+        filtered = allPacks;
+
+    } else {
+
+        filtered = allPacks.filter(pack =>
+            pack.events.includes(eventName)
+        );
+
+    }
+
+    filtered.sort((a, b) => {
+
+        if (a.popular && !b.popular)
+            return -1;
+
+        if (!a.popular && b.popular)
+            return 1;
+
+        return 0;
+
+    });
+
+    renderPacks(filtered);
+
+}
+
 loadPacks();
+// ===============================
+// AFFICHAGE DES PACKS
+// ===============================
+
+function renderPacks(packs) {
+
+    const grid = document.getElementById("packs-grid");
+
+    grid.innerHTML = "";
+
+    if (packs.length === 0) {
+
+        grid.innerHTML = `
+        <div class="col-span-full rounded-3xl border border-zinc-800 bg-zinc-900 p-12 text-center">
+
+            <h3 class="text-2xl font-bold text-white">
+
+                Aucun pack disponible
+
+            </h3>
+
+            <p class="mt-3 text-zinc-400">
+
+                Aucun pack ne correspond à cet événement.
+
+            </p>
+
+        </div>
+        `;
+
+        return;
+    }
+
+    packs.forEach(pack => {
+
+        const features = pack.features
+            .map(feature => `
+                <li class="flex items-center gap-2">
+                    <span class="text-[#F5C400]">✔</span>
+                    <span>${feature}</span>
+                </li>
+            `)
+            .join("");
+
+        const idealFor = pack.idealFor
+            .map(item => `
+                <span class="rounded-full bg-zinc-800 px-3 py-1 text-xs text-zinc-300">
+                    ${item}
+                </span>
+            `)
+            .join("");
+
+        grid.innerHTML += `
+
+<div class="group overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900 transition-all duration-300 hover:-translate-y-2 hover:border-[#F5C400] hover:shadow-2xl hover:shadow-[#F5C400]/10">
+
+    <div class="relative">
+
+        <img
+            src="${pack.image}"
+            class="h-56 w-full object-cover transition duration-500 group-hover:scale-105"
+            alt="${pack.name}">
+
+        ${pack.popular ? `
+
+        <div class="absolute left-4 top-4 rounded-full bg-[#F5C400] px-4 py-2 text-xs font-bold text-black">
+
+            ⭐ Le plus populaire
+
+        </div>
+
+        ` : ""}
+
+    </div>
+
+    <div class="p-7">
+
+        <div class="flex items-center justify-between">
+
+            <h3 class="text-2xl font-black text-white">
+
+                ${pack.name}
+
+            </h3>
+
+            <span class="rounded-full bg-[#F5C400]/10 px-3 py-1 text-sm font-bold text-[#F5C400]">
+
+                ${pack.price}
+
+            </span>
+
+        </div>
+
+        <p class="mt-4 flex items-center gap-2 text-sm text-zinc-400">
+
+            👥 ${pack.people}
+
+        </p>
+
+        <div class="mt-6">
+
+            <h4 class="font-semibold text-white">
+
+                Ce pack comprend
+
+            </h4>
+
+            <ul class="mt-4 space-y-3 text-zinc-300">
+
+                ${features}
+
+            </ul>
+
+        </div>
+
+        <div class="mt-6">
+
+            <h4 class="font-semibold text-white">
+
+                Idéal pour
+
+            </h4>
+
+            <div class="mt-4 flex flex-wrap gap-2">
+
+                ${idealFor}
+
+            </div>
+
+        </div>
+
+        <a
+            href="https://wa.me/21653308760"
+            class="mt-8 flex items-center justify-center gap-2 rounded-xl bg-[#F5C400] py-3 font-bold text-black transition hover:bg-yellow-300">
+
+            Réserver
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </a>
+
+    </div>
+
+</div>
+
+`;
+
+    });
+
+}

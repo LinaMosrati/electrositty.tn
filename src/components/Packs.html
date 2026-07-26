@@ -1,40 +1,91 @@
-<section id="packs" class="bg-zinc-950 py-28">
+<section id="packs" class="bg-black py-24">
 
     <div class="mx-auto max-w-7xl px-6">
 
-        <!-- Titre -->
+        <!-- Header -->
 
-        <div class="text-center">
+        <div class="text-center mb-16">
 
             <span
-                class="inline-block rounded-full border border-primary/30 bg-primary/10 px-5 py-2 text-sm font-semibold uppercase tracking-wider text-primary">
+                class="inline-flex rounded-full border border-[#F5C400]/20 bg-[#F5C400]/10 px-5 py-2 text-sm font-semibold text-[#F5C400]">
 
                 NOS PACKS
 
             </span>
 
-            <h2
-                class="mt-6 text-4xl font-black text-white md:text-5xl">
+            <h2 class="mt-6 text-4xl md:text-5xl font-black text-white">
 
-                Choisissez votre formule
+                Choisissez le pack idéal
 
             </h2>
 
-            <p
-                class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-zinc-400">
+            <p class="mt-5 max-w-2xl mx-auto text-lg text-zinc-400">
 
-                Des packs adaptés à chaque type
-                d'événement, du plus simple au plus prestigieux.
+                Sélectionnez votre type d'événement et découvrez uniquement les packs qui vous correspondent.
 
             </p>
 
         </div>
 
-        <!-- Cartes -->
+        <!-- Layout -->
 
-        <div
-            id="packs-container"
-            class="mt-20 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+        <div class="grid gap-12 lg:grid-cols-[280px_1fr]">
+
+            <!-- ================= Sidebar ================= -->
+
+            <aside
+                class="lg:sticky lg:top-28 h-fit rounded-3xl border border-zinc-800 bg-zinc-900 p-6">
+
+                <h3
+                    class="mb-6 text-xl font-bold text-white">
+
+                    Type d'événement
+
+                </h3>
+
+                <div
+                    id="event-sidebar"
+                    class="space-y-3">
+
+                </div>
+
+            </aside>
+
+            <!-- ================= Packs ================= -->
+
+            <div>
+
+                <!-- titre dynamique -->
+
+                <div class="mb-10">
+
+                    <h3
+                        id="selected-event-title"
+                        class="text-3xl font-black text-white">
+
+                        Tous les packs
+
+                    </h3>
+
+                    <p
+                        id="selected-event-description"
+                        class="mt-2 text-zinc-400">
+
+                        Découvrez toutes nos solutions de sonorisation et d'éclairage.
+
+                    </p>
+
+                </div>
+
+                <!-- packs -->
+
+                <div
+                    id="packs-grid"
+                    class="grid gap-8 md:grid-cols-2">
+
+                </div>
+
+            </div>
 
         </div>
 

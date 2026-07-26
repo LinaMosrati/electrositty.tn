@@ -1,6 +1,10 @@
 let materiels = [];
+let currentCategory = "Tous";
 
 const container = document.getElementById("materiels-container");
+const searchInput = document.getElementById("search-material");
+const resultsCount = document.getElementById("results-count");
+const categoryTitle = document.getElementById("category-title");
 
 async function loadMateriels() {
 
@@ -8,67 +12,154 @@ async function loadMateriels() {
 
     materiels = await response.json();
 
-    displayMateriels("Tous");
+    displayMateriels();
 
 }
 
-function displayMateriels(category) {
+function displayMateriels() {
 
     container.innerHTML = "";
 
-    const data = category === "Tous"
-        ? materiels
-        : materiels.filter(item => item.category === category);
+    const keyword = searchInput.value.toLowerCase().trim();
 
-    data.forEach(item => {
+    const filtered = materiels.filter(item => {
+
+        const matchCategory =
+            currentCategory === "Tous" ||
+            item.category === currentCategory;
+
+        const matchSearch =
+            item.name.toLowerCase().includes(keyword);
+
+        return matchCategory && matchSearch;
+
+    });
+
+    resultsCount.textContent =
+        `${filtered.length} matériel${filtered.length > 1 ? "s" : ""}`;
+
+    categoryTitle.textContent =
+        currentCategory === "Tous"
+            ? "Tous les matériels"
+            : currentCategory;
+
+    if (filtered.length === 0) {
+
+        container.innerHTML = `
+
+<div class="rounded-3xl border border-zinc-800 bg-zinc-900 p-12 text-center">
+
+    <h3 class="text-2xl font-bold text-white">
+
+        Aucun matériel trouvé
+
+    </h3>
+
+    <p class="mt-3 text-zinc-400">
+
+        Essayez une autre recherche ou une autre catégorie.
+
+    </p>
+
+</div>
+
+`;
+
+        return;
+
+    }
+
+    filtered.forEach(item => {
 
         container.innerHTML += `
 
-        <div
-            class="group overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900 transition duration-500 hover:-translate-y-3 hover:border-teal-500 hover:shadow-2xl hover:shadow-teal-500/20">
+<div
+class="group flex flex-col overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900 transition duration-300 hover:border-[#F5C400] hover:shadow-xl hover:shadow-[#F5C400]/10 md:flex-row">
 
-            <div class="overflow-hidden">
+    <div class="md:w-60">
 
-                <img
-                    src="${item.image}"
-                    class="h-64 w-full object-cover transition duration-700 group-hover:scale-110">
+        <img
+            src="${item.image}"
+            alt="${item.name}"
+            class="h-48 w-full object-cover transition duration-500 group-hover:scale-105 md:h-full">
 
-            </div>
+    </div>
 
-            <div class="p-6">
+    <div
+        class="flex flex-1 flex-col justify-between p-6">
+
+        <div>
+
+            <div class="flex flex-wrap items-center gap-3">
 
                 <span
-                    class="rounded-full bg-teal-500/10 px-3 py-1 text-sm text-teal-400">
+                    class="rounded-full bg-[#F5C400]/10 px-3 py-1 text-xs font-semibold text-[#F5C400]">
 
                     ${item.category}
 
                 </span>
 
-                <h3
-                    class="mt-5 text-2xl font-bold text-white">
+                ${item.badge ? `
+                <span
+                    class="rounded-full bg-green-500/10 px-3 py-1 text-xs font-semibold text-green-400">
 
-                    ${item.name}
+                    ⭐ ${item.badge}
 
-                </h3>
+                </span>
+                ` : ""}
 
-                <p
-                    class="mt-3 text-zinc-400">
+            </div>
 
-                    ✔ Disponible
+            <h3
+                class="mt-4 text-2xl font-bold text-white">
+
+                ${item.name}
+
+            </h3>
+
+            <p
+                class="mt-3 text-zinc-400">
+
+                ${item.description || "Matériel professionnel disponible à la location."}
+
+            </p>
+
+        </div>
+
+        <div
+            class="mt-8 flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+
+            <div>
+
+                <p class="text-sm text-zinc-500">
+
+                    À partir de
 
                 </p>
 
                 <h4
-                    class="mt-5 text-3xl font-black text-teal-400">
+                    class="text-3xl font-black text-[#F5C400]">
 
                     ${item.price}
 
                 </h4>
 
+            </div>
+
+            <div
+                class="flex flex-wrap gap-3">
+
+                <span
+                    class="rounded-full bg-green-500/10 px-4 py-2 text-sm font-semibold text-green-400">
+
+                    ✔ Disponible
+
+                </span>
+
                 <a
                     href="https://wa.me/21653308760"
                     target="_blank"
-                    class="mt-6 flex justify-center rounded-full bg-teal-500 py-3 font-semibold text-black transition hover:bg-teal-400">
+                    class="rounded-xl bg-[#F5C400] px-6 py-3 font-bold text-black transition hover:bg-yellow-400">
 
                     Réserver
 
@@ -78,43 +169,63 @@ function displayMateriels(category) {
 
         </div>
 
-        `;
+    </div>
+
+</div>
+
+`;
 
     });
 
 }
 
+/* ============================= */
+/* Catégories */
+/* ============================= */
+
 document.addEventListener("click", e => {
 
-    if (!e.target.classList.contains("filter-btn")) return;
+    const btn = e.target.closest(".category-btn");
 
-    document
-        .querySelectorAll(".filter-btn")
-        .forEach(btn => {
+    if (!btn) return;
 
-            btn.classList.remove(
-                "bg-teal-500",
-                "text-black"
-            );
+    document.querySelectorAll(".category-btn").forEach(button => {
 
-            btn.classList.add(
-                "bg-zinc-800",
-                "text-white"
-            );
+        button.classList.remove(
+            "bg-yellow-500",
+            "text-black"
+        );
 
-        });
+        button.classList.add(
+            "bg-zinc-800",
+            "text-white"
+        );
 
-    e.target.classList.remove(
+    });
+
+    btn.classList.remove(
         "bg-zinc-800",
         "text-white"
     );
 
-    e.target.classList.add(
-        "bg-teal-500",
+    btn.classList.add(
+        "bg-yellow-500",
         "text-black"
     );
 
-    displayMateriels(e.target.dataset.category);
+    currentCategory = btn.dataset.category;
+
+    displayMateriels();
+
+});
+
+/* ============================= */
+/* Recherche */
+/* ============================= */
+
+searchInput.addEventListener("input", () => {
+
+    displayMateriels();
 
 });
 

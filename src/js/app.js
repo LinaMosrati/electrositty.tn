@@ -18,10 +18,8 @@ async function init() {
     await loadComponent("materiels", "src/components/Materiels.html");
     await loadComponent("process", "src/components/Process.html");
     await loadComponent("whychooseus", "src/components/WhyChooseUs.html");
-    await loadComponent("gallery", "src/components/Gallery.html");
-    await loadComponent("testimonials", "src/components/Testimonials.html");
-    await loadComponent("contact", "src/components/Contact.html");
-    await loadComponent("footer", "src/components/Footer.html");
+
+  
 
     // Navbar
 

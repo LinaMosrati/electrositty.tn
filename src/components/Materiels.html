@@ -1,71 +1,272 @@
-<section id="materiels" class="bg-black py-28">
+<section id="materiels" class="bg-black py-24">
 
-    <div class="mx-auto max-w-7xl px-6">
+    <div class="mx-auto max-w-[1500px] px-6">
 
         <!-- Header -->
 
         <div class="text-center">
 
             <span
-                class="rounded-full bg-teal-500/10 px-5 py-2 text-sm font-semibold uppercase tracking-wider text-teal-400">
+                class="rounded-full bg-yellow-500/10 px-5 py-2 text-sm font-semibold uppercase tracking-wider text-[#F5C400]">
 
-                NOS MATÉRIELS
+                NOTRE MATÉRIEL
 
             </span>
 
             <h2
                 class="mt-6 text-4xl font-black text-white md:text-5xl">
 
-                Notre catalogue professionnel
+                Catalogue professionnel
 
             </h2>
 
             <p
-                class="mx-auto mt-6 max-w-3xl text-lg leading-8 text-zinc-400">
+                class="mx-auto mt-5 max-w-3xl text-lg text-zinc-400">
 
-                Découvrez notre matériel professionnel disponible
-                à la location pour tous vos événements.
+                Trouvez rapidement le matériel adapté à votre événement.
 
             </p>
 
         </div>
 
-        <!-- Filters -->
+        <!-- Search -->
 
-        <div
-            class="mt-14 flex flex-wrap justify-center gap-4">
+        <div class="mx-auto mt-12 max-w-3xl">
 
-            <button class="filter-btn rounded-full bg-zinc-800 px-6 py-3 text-white transition hover:bg-teal-500 hover:text-black" data-category="Tous">
-                Tous
-            </button>
+            <div class="relative">
 
-            <button class="filter-btn rounded-full bg-zinc-800 px-6 py-3 text-white transition hover:bg-teal-500 hover:text-black" data-category="Son">
-                Son
-            </button>
+                <i
+                    class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-zinc-500">
+                </i>
 
-            <button class="filter-btn rounded-full bg-zinc-800 px-6 py-3 text-white transition hover:bg-teal-500 hover:text-black" data-category="Lumière">
-                Lumière
-            </button>
+                <input
+                    id="search-material"
+                    type="text"
+                    placeholder="Rechercher un matériel..."
+                    class="w-full rounded-2xl border border-zinc-800 bg-zinc-900 py-4 pl-14 pr-5 text-white outline-none transition focus:border-[#F5C400]">
 
-            <button class="filter-btn rounded-full bg-zinc-800 px-6 py-3 text-white transition hover:bg-teal-500 hover:text-black" data-category="LED">
-                LED
-            </button>
-
-            <button class="filter-btn rounded-full bg-zinc-800 px-6 py-3 text-white transition hover:bg-teal-500 hover:text-black" data-category="DJ">
-                DJ
-            </button>
-
-            <button class="filter-btn rounded-full bg-zinc-800 px-6 py-3 text-white transition hover:bg-teal-500 hover:text-black" data-category="Structure">
-                Structure
-            </button>
+            </div>
 
         </div>
 
-        <!-- Cards -->
+        <!-- Layout -->
 
         <div
-            id="materiels-container"
-            class="mt-20 grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            class="mt-16 grid gap-10 lg:grid-cols-[260px_1fr]">
+
+            <!-- Sidebar -->
+
+            <aside
+                class="h-fit rounded-3xl border border-zinc-800 bg-zinc-900 p-6 lg:sticky lg:top-28">
+
+                <h3
+                    class="mb-6 text-xl font-bold text-white">
+
+                    Catégories
+
+                </h3>
+
+                <div
+                    id="categories-sidebar"
+                    class="space-y-3">
+
+                    <button
+                        data-category="Tous"
+                        class="category-btn flex w-full items-center gap-3 rounded-xl bg-yellow-500 px-4 py-3 text-left font-semibold text-black">
+
+                        📦 Tous
+
+                    </button>
+
+                    <button
+                        data-category="Son"
+                        class="category-btn flex w-full items-center gap-3 rounded-xl bg-zinc-800 px-4 py-3 text-left text-white transition hover:bg-zinc-700">
+
+                        🔊 Son
+
+                    </button>
+
+                    <button
+                        data-category="Lumière"
+                        class="category-btn flex w-full items-center gap-3 rounded-xl bg-zinc-800 px-4 py-3 text-left text-white transition hover:bg-zinc-700">
+
+                        💡 Lumière
+
+                    </button>
+
+                    <button
+                        data-category="LED"
+                        class="category-btn flex w-full items-center gap-3 rounded-xl bg-zinc-800 px-4 py-3 text-left text-white transition hover:bg-zinc-700">
+
+                        📺 LED
+
+                    </button>
+
+                    <button
+                        data-category="DJ"
+                        class="category-btn flex w-full items-center gap-3 rounded-xl bg-zinc-800 px-4 py-3 text-left text-white transition hover:bg-zinc-700">
+
+                        🎧 DJ
+
+                    </button>
+
+                 
+
+                </div>
+
+            </aside>
+
+            <!-- Content -->
+
+            <div>
+
+                <div
+                    class="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-center">
+
+                    <div>
+
+                        <h3
+                            id="category-title"
+                            class="text-3xl font-black text-white">
+
+                            Tous les matériels
+
+                        </h3>
+
+                        <p
+                            id="results-count"
+                            class="mt-2 text-zinc-400">
+
+                            0 matériel
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- Cards -->
+
+                <div
+                    id="materiels-container"
+                    class="space-y-5">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="contact" class="bg-gradient-to-b from-black to-zinc-950 py-20">
+
+    <div class="mx-auto max-w-6xl px-6">
+
+        <div class="rounded-[40px] border border-[#F5C400]/20 bg-zinc-900 p-8 lg:p-14 shadow-2xl">
+
+            <!-- Header -->
+
+            <div class="text-center">
+
+                <span class="inline-flex rounded-full bg-[#F5C400]/10 px-5 py-2 text-sm font-semibold uppercase tracking-[0.2em] text-[#F5C400]">
+                    Votre événement commence ici
+                </span>
+
+                <h2 class="mt-6 text-4xl font-black text-white lg:text-5xl">
+                    Prêt à créer un événement inoubliable ?
+                </h2>
+
+                <p class="mx-auto mt-6 max-w-3xl text-lg leading-8 text-zinc-400">
+                    Notre équipe vous accompagne de la conception jusqu'à la réalisation.
+                    Contactez-nous dès aujourd'hui pour obtenir un devis personnalisé.
+                </p>
+
+            </div>
+
+            <!-- Coordonnées -->
+
+            <div class="mt-14 grid gap-6 md:grid-cols-2">
+
+                <a href="tel:+21653308760"
+                    class="flex items-center gap-5 rounded-3xl border border-zinc-800 bg-black/40 p-6 transition hover:border-[#F5C400]">
+
+                    <div class="flex h-16 w-16 items-center justify-center rounded-full bg-[#F5C400] text-3xl">
+                        📞
+                    </div>
+
+                    <div>
+                        <p class="text-zinc-400 text-sm">
+                            Téléphone & WhatsApp
+                        </p>
+
+                        <h3 class="text-2xl font-bold text-white">
+                            +216 53 308 760
+                        </h3>
+                    </div>
+
+                </a>
+
+                <a href="mailto:electrositty@gmail.com"
+                    class="flex items-center gap-5 rounded-3xl border border-zinc-800 bg-black/40 p-6 transition hover:border-[#F5C400]">
+
+                    <div class="flex h-16 w-16 items-center justify-center rounded-full bg-[#F5C400] text-3xl">
+                        ✉️
+                    </div>
+
+                    <div>
+                        <p class="text-zinc-400 text-sm">
+                            Adresse e-mail
+                        </p>
+
+                        <h3 class="text-lg font-bold text-white break-all">
+                            electrositty@gmail.com
+                        </h3>
+                    </div>
+
+                </a>
+
+            </div>
+
+            <!-- Réseaux -->
+
+            <div class="mt-14">
+
+                <h3 class="mb-8 text-center text-2xl font-bold text-white">
+                    Suivez-nous
+                </h3>
+
+                <div class="flex flex-wrap justify-center gap-4">
+
+                    <a href="https://wa.me/21653308760"
+                        target="_blank"
+                        class="rounded-full bg-[#25D366] px-8 py-4 font-bold text-white transition hover:scale-105">
+                        WhatsApp
+                    </a>
+
+                    <a href="https://www.instagram.com/sittymusik"
+                        target="_blank"
+                        class="rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 px-8 py-4 font-bold text-white transition hover:scale-105">
+                        Instagram
+                    </a>
+
+                    <a href="https://www.facebook.com/skandar.setti/"
+                        target="_blank"
+                        class="rounded-full bg-[#1877F2] px-8 py-4 font-bold text-white transition hover:scale-105">
+                        Facebook
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/eskandar-setti-809524422/"
+                        target="_blank"
+                        class="rounded-full bg-[#0A66C2] px-8 py-4 font-bold text-white transition hover:scale-105">
+                        LinkedIn
+                    </a>
+
+                </div>
+
+            </div>
 
         </div>
 
